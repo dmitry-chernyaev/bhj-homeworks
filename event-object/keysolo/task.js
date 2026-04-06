@@ -43,24 +43,27 @@ class Game {
       return;
     }
 
-    if (++this.winsElement.textContent === 10) {
+    this.winsElement.textContent = parseInt(this.winsElement.textContent) + 1;
+    if (parseInt(this.winsElement.textContent) === 10) {
       alert('Победа!');
       this.reset();
+    } else {
+      this.setNewWord();
     }
-    this.setNewWord();
   }
 
   fail() {
-    if (++this.lossElement.textContent === 3) {
+    this.lossElement.textContent = parseInt(this.lossElement.textContent) + 1;
+    if (parseInt(this.lossElement.textContent) === 3) {
       alert('Вы проиграли!');
       this.reset();
+    } else {
+      this.setNewWord();
     }
-    this.setNewWord();
   }
 
   setNewWord() {
     const word = this.getWord();
-
     this.renderWord(word);
   }
 
